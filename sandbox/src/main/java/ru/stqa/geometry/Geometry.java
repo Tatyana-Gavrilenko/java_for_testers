@@ -6,13 +6,13 @@ import ru.stqa.geometry.figures.Triangle;
 
 public class Geometry {
     public static void main(String[] args) {
-        Square.printSquareArea( 6.0);
-        Square.printSquareArea( 7.9);
+        Square.printSquareArea(new Square(6.0));
+        Square.printSquareArea(new Square(7.9));
 
-        Rectangle.printRectangleArea(3.0, 5.0);
-        Rectangle.printRectangleArea(4.0, 8.0);
+        Rectangle.printRectangleArea(new Rectangle(5, 4));
+        Rectangle.printRectangleArea(new Rectangle(5, 8));
 
-        Triangle.printlTriangleArea(5.0, 4.0, 3.0);
+        Triangle.printlTriangleArea(new Triangle(5, 4, 3));
     }
 
 }
