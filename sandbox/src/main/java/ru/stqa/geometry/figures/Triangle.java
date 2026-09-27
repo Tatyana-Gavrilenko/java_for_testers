@@ -17,6 +17,15 @@ public class Triangle {
         System.out.println(text);
     }
 
+    public static void printlTrianglePerimeter(Triangle t) {
+        var text = String.format("Периметр треугольника со сторонами %f и %f и %f = %f", t.a, t.b, t.c, t.trianglPperimeter());
+        System.out.println(text);
+    }
+
+    public double trianglPperimeter() {
+        return this.a + this.b + this.c;
+    }
+
     public double triangleArea() {
         double p = (this.a + this.b + this.c)/2;
         return Math.sqrt(p*(p-this.a)*(p-this.b)*(p-this.c));

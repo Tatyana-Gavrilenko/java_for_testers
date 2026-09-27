@@ -13,6 +13,7 @@ public class Geometry {
         Rectangle.printRectangleArea(new Rectangle(5, 8));
 
         Triangle.printlTriangleArea(new Triangle(5, 4, 3));
+        Triangle.printlTrianglePerimeter(new Triangle(5, 4, 3));
     }
 
 }
