@@ -11,4 +11,9 @@ public class TriangleTests {
         double result = t.triangleArea();
         Assertions.assertEquals(6, result);
     }
+
+    @Test
+    void canCalculatePerimeterTriangle() {
+              Assertions.assertEquals(20, new Triangle(5,4,3).trianglPerimeter());
+    }
 }

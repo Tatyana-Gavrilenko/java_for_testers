@@ -18,11 +18,11 @@ public class Triangle {
     }
 
     public static void printlTrianglePerimeter(Triangle t) {
-        var text = String.format("Периметр треугольника со сторонами %f и %f и %f = %f", t.a, t.b, t.c, t.trianglPperimeter());
+        var text = String.format("Периметр треугольника со сторонами %f и %f и %f = %f", t.a, t.b, t.c, t.trianglPerimeter());
         System.out.println(text);
     }
 
-    public double trianglPperimeter() {
+    public double trianglPerimeter() {
         return this.a + this.b + this.c;
     }
 
