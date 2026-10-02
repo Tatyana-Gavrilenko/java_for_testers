@@ -1,15 +1,16 @@
 package ru.stqa.geometry.figures;
 
-public class Triangle {
+public record Triangle (  double a,
+                          double b,
+                          double c)
+    {
+    public Triangle {
+        if (a < 0 || b < 0 || c < 0) {
+            throw new IllegalArgumentException("Any side Triangle should be non-negative");}
 
-    private double a;
-    private double b;
-    private double c;
-
-    public Triangle (double a, double b, double c) {
-        this.a = a;
-        this.b = b;
-        this.c = c;
+        if (a + b < c || a + c < b || b + c < a) {
+            throw new IllegalArgumentException("Sum of two sides Triangle should be no less than a third");
+        }
     }
 
     public static void printlTriangleArea(Triangle t) {

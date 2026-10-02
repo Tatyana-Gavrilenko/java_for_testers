@@ -16,4 +16,55 @@ public class TriangleTests {
     void canCalculatePerimeterTriangle() {
               Assertions.assertEquals(20, new Triangle(5,4,3).trianglPerimeter());
     }
+
+    //Позитивный сценарий
+    @Test
+    void creatTriangleSuccess() {
+        try {
+            new Triangle( 5.0, 4.0, 3.0);
+        }
+        catch (IllegalArgumentException exception) {
+            Assertions.fail();
+        }
+    }
+    //негативный сценарий отрициательная сторона A
+    @Test
+    void cannotCreatTriangleWithNegativeSideA() {
+        try {
+            new Triangle( -5.0, 4.0, 3.0);
+            Assertions.fail();}
+        catch (IllegalArgumentException exception) {
+            //ok
+        }
+    }
+    //негативный сценарий отрициательная сторона B
+    @Test
+    void cannotCreatTriangleWithNegativeSideB() {
+        try {
+            new Triangle( 5.0, -4.0, 3.0);
+            Assertions.fail();}
+        catch (IllegalArgumentException exception) {
+            //ok
+        }
+    }
+    //негативный сценарий отрициательная сторона C
+    @Test
+    void cannotCreatTriangleWithNegativeSideC() {
+        try {
+            new Triangle( 5.0, 4.0, -3.0);
+            Assertions.fail();}
+        catch (IllegalArgumentException exception) {
+            //ok
+        }
+    }
+    //проверка суммы сторон
+    @Test
+    void sumSides() {
+        try {
+            new Triangle( 1.0, 2.0, 4.0);
+            Assertions.fail();}
+        catch (IllegalArgumentException exception) {
+            //ok
+        }
+    }
 }
