@@ -38,22 +38,15 @@ public record Triangle (double a,
         public boolean equals(Object o) {
             if (o == null || getClass() != o.getClass()) return false;
             Triangle triangle = (Triangle) o;
-                return (Double.compare(a, triangle.a) == 0 && Double.compare(b, triangle.b) == 0 && Double.compare(c, triangle.c) == 0)
+            return (Double.compare(a, triangle.a) == 0 && Double.compare(b, triangle.b) == 0 && Double.compare(c, triangle.c) == 0)
                     || (Double.compare(a, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
-                    || (Double.compare(b, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(c, triangle.c) == 0)
-                    || (Double.compare(b, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(a, triangle.c) == 0)
+                    || (Double.compare(b, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
+                    || (Double.compare(b, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(a, triangle.c) == 0)
                     || (Double.compare(c, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
+                    || (Double.compare(b, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(a, triangle.c) == 0)
                     || (Double.compare(c, triangle.a) == 0 && Double.compare(b, triangle.b) == 0 && Double.compare(a, triangle.c) == 0);
         }
         public int hashCode() {
             return 1;
         }
     }
-
-    //return (Double.compare(a, t.a) == 0 && Double.compare(b, t.b) == 0 && Double.compare(c, t.c) == 0)  // a,b,c
-//        || (Double.compare(a, t.a) == 0 && Double.compare(c, t.b) == 0 && Double.compare(b, t.c) == 0)  // a,c,b
-//        || (Double.compare(b, t.a) == 0 && Double.compare(a, t.b) == 0 && Double.compare(c, t.c) == 0)  // b,a,c  <-- добавили
-//        || (Double.compare(b, t.a) == 0 && Double.compare(c, t.b) == 0 && Double.compare(a, t.c) == 0)  // b,c,a
-//        || (Double.compare(c, t.a) == 0 && Double.compare(a, t.b) == 0 && Double.compare(b, t.c) == 0)  // c,a,b
-//        || (Double.compare(c, t.a) == 0 && Double.compare(b, t.b) == 0 && Double.compare(a, t.c) == 0); // c,b,a
-//}

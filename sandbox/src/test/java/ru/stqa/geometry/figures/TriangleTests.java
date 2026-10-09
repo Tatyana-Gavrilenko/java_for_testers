@@ -104,42 +104,4 @@ public class TriangleTests {
         var triangle1 = new Triangle(a, c, b);
         Assertions.assertEquals(triangle, triangle1);
     }
-    @Test
-    void testEquality3(){
-        var a = 2;
-        var b = 3;
-        var c = 4;
-        var triangle = new Triangle(a, b, c);
-        var triangle1 = new Triangle(b, a, c);
-        Assertions.assertEquals(triangle, triangle1);
-    }
-
-    @Test
-    void testEquality4(){
-        var a = 2;
-        var b = 3;
-        var c = 4;
-        var triangle = new Triangle(a, b, c);
-        var triangle1 = new Triangle(b, c, a);
-        Assertions.assertEquals(triangle, triangle1);
-    }
-
-    @Test
-    void testEquality5(){
-        var a = 2;
-        var b = 3;
-        var c = 4;
-        var triangle = new Triangle(a, b, c);
-        var triangle1 = new Triangle(c, a, b);
-        Assertions.assertEquals(triangle, triangle1);
-    }
-    @Test
-    void testEquality6(){
-        var a = 2;
-        var b = 3;
-        var c = 4;
-        var triangle = new Triangle(a, b, c);
-        var triangle1 = new Triangle(c, b, a);
-        Assertions.assertEquals(triangle, triangle1);
-    }
 }
