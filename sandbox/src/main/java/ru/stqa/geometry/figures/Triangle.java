@@ -40,10 +40,9 @@ public record Triangle (double a,
             Triangle triangle = (Triangle) o;
             return (Double.compare(a, triangle.a) == 0 && Double.compare(b, triangle.b) == 0 && Double.compare(c, triangle.c) == 0)
                     || (Double.compare(a, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
-                    || (Double.compare(b, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
-                    || (Double.compare(b, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(a, triangle.c) == 0)
-                    || (Double.compare(c, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
+                    || (Double.compare(b, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(c, triangle.c) == 0)
                     || (Double.compare(b, triangle.a) == 0 && Double.compare(c, triangle.b) == 0 && Double.compare(a, triangle.c) == 0)
+                    || (Double.compare(c, triangle.a) == 0 && Double.compare(a, triangle.b) == 0 && Double.compare(b, triangle.c) == 0)
                     || (Double.compare(c, triangle.a) == 0 && Double.compare(b, triangle.b) == 0 && Double.compare(a, triangle.c) == 0);
         }
         public int hashCode() {
