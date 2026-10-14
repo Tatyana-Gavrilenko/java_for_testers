@@ -71,16 +71,18 @@ public class TestBase  {
         driver.findElement(By.linkText("add new")).click();
         driver.findElement(By.name("firstname")).click();
         driver.findElement(By.name("firstname")).sendKeys(contact.firstname());
-        driver.findElement(By.name("middlename")).click();
-        driver.findElement(By.name("middlename")).sendKeys(contact.middlename());
         driver.findElement(By.name("lastname")).click();
         driver.findElement(By.name("lastname")).sendKeys(contact.lastname());
+        driver.findElement(By.name("address")).click();
+        driver.findElement(By.name("address")).sendKeys(contact.address());
+        driver.findElement(By.name("address")).click();
+        driver.findElement(By.name("address")).sendKeys(contact.address());
         driver.findElement(By.name("mobile")).click();
-        driver.findElement(By.name("mobile")).sendKeys(contact.numberPhone());
+        driver.findElement(By.name("mobile")).sendKeys(contact.mobile());
         driver.findElement(By.xpath("(//input[@name=\'submit\'])[2]")).click();
         driver.findElement(By.linkText("home page")).click();
     }
-
+//firstname, this.lastname, this.address, this.allEmail, this.mobile
     protected void openHomePage() {
         if (!isElementPresent(By.name("selected[]"))) {
             driver.findElement(By.linkText("home page")).click();

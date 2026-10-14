@@ -5,7 +5,7 @@ public class ContactCreationTests extends TestBase {
 
     @Test
     public void canCreateContact() {
-        createContact(new ContactData("test", "test2", "test3", "12345"));
+        createContact(new ContactData("Tanya", "Gavr", "NSK", "89230000000"));
     }
 
     @Test
@@ -14,5 +14,13 @@ public class ContactCreationTests extends TestBase {
         var emptyContact = new ContactData();
         var contactWithName = emptyContact.withName("some name");
         createContact(contactWithName);
+    }
+
+    @Test
+    public void canCreateContactEmptyMobile() {
+        openHomePage();
+        var emptyContact = new ContactData();
+        var contactWithMobile = emptyContact.withMobile("12345");
+        createContact(contactWithMobile);
     }
 }
