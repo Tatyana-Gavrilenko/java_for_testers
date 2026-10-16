@@ -1,7 +1,23 @@
 package manager;
 
+import org.openqa.selenium.By;
 import test.TestBase;
 
 public class HelperBase extends TestBase {
 
+    protected final ApplicationManager manager;
+
+    public HelperBase(ApplicationManager Manager) {
+        this.manager = Manager;
+    }
+
+    protected void type(By locator, String text) {
+        click(locator);
+        manager.driver.findElement(locator).clear();
+        manager.driver.findElement(locator).sendKeys(text);
+    }
+
+    protected void click(By locator) {
+        manager.driver.findElement(locator).click();
+    }
 }
