@@ -5,8 +5,8 @@ import org.openqa.selenium.By;
 
 public class GroupHelper extends HelperBase{
 
-    public GroupHelper(ApplicationManager Manager) {
-        super(Manager);
+    public GroupHelper(ApplicationManager manager) {
+        super(manager);
     }
 
     public void createGroup(GroupData group) {

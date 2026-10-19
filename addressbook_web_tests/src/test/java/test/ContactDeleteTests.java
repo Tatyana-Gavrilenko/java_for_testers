@@ -7,8 +7,8 @@ public class ContactDeleteTests extends TestBase {
 
     @Test
     public void canDeletedContact() {
-        app.openHomePage();
-        app.createContact(new ContactData("test", "test2", "test3", "12345"));
-        app.deleteContact();
+        app.contact().openHomePage();
+        app.contact().createContact(new ContactData("test", "test2", "test3", "testmail","12345"));
+        app.contact().deleteContact();
     }
 }
