@@ -2,7 +2,6 @@ package manager;
 
 import model.ContactData;
 import org.openqa.selenium.By;
-import test.TestBase;
 
 public class ContactHelper extends HelperBase {
 
@@ -26,7 +25,7 @@ public class ContactHelper extends HelperBase {
         openHomePage();
         selectContact();
         initContactModification();
-        fillContactForm(modifiedContact);
+        fillNameContactForm(modifiedContact);
         submitContactModification();
         returnHomePage();
     }
@@ -36,8 +35,7 @@ public class ContactHelper extends HelperBase {
     }
 
     private void initContactCreation() {
-       // click(By.name("add new"));
-        manager.driver.findElement(By.linkText("add new")).click();
+       click(By.linkText("add new"));
     }
 
     private void removeSelectedContact() {
@@ -46,12 +44,16 @@ public class ContactHelper extends HelperBase {
 
     public void openHomePage() {
         if (!manager.isElementPresent(By.name("selected[]"))) {
-            returnHomePage();
+            returnHome();
         }
     }
 
     private void returnHomePage() {
         click(By.linkText("home page"));
+    }
+
+    private void returnHome() {
+        click(By.linkText("home"));
     }
 
     private void submitContactModification() {
@@ -60,18 +62,26 @@ public class ContactHelper extends HelperBase {
 
     private void fillContactForm(ContactData contact) {
         type(By.name("firstname"), contact.firstname());
-        type(By.name("lastname"), contact.firstname());
-        type(By.name("address"), contact.firstname());
-        type(By.name("email"), contact.firstname());
-        type(By.name("mobile"), contact.firstname());
+        type(By.name("lastname"), contact.lastname());
+        type(By.name("address"), contact.address());
+        type(By.name("email"), contact.email());
+        type(By.name("mobile"), contact.mobile());
+    }
+
+    private void fillNameContactForm(ContactData contact) {
+        type(By.name("firstname"), contact.firstname());
     }
 
     private void initContactModification() {
         click(By.xpath("//img[@alt='Edit']"));
-        //xpath=//img[@alt='Edit']
     }
 
     private void selectContact() {
         click(By.name("selected[]"));
+    }
+
+    public void deleteAllContact() {
+        click(By.id("MassCB"));
+        removeSelectedContact();
     }
 }
