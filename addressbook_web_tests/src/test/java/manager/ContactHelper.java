@@ -30,6 +30,16 @@ public class ContactHelper extends HelperBase {
         returnHomePage();
     }
 
+    public void modifyNameEmailContact(ContactData modifiedContact) {
+        openHomePage();
+        selectContact();
+        initContactModification();
+        fillWithNameEmailContactForm(modifiedContact);
+        submitContactModification();
+        returnHomePage();
+    }
+
+
     private void submitContactCreation() {
         click(By.xpath("(//input[@name=\'submit\'])[2]"));
     }
@@ -70,6 +80,11 @@ public class ContactHelper extends HelperBase {
 
     private void fillNameContactForm(ContactData contact) {
         type(By.name("firstname"), contact.firstname());
+    }
+
+    private void fillWithNameEmailContactForm(ContactData contact) {
+        type(By.name("firstname"), contact.firstname());
+        type(By.name("email"), contact.email());
     }
 
     private void initContactModification() {
