@@ -11,7 +11,7 @@ public class CollectionTests {
     @Test
     void arrayTests() {
         var array = new String[]{"a", "b", "c"};
-        //Assertions.assertEquals("a", array[0]);
+        Assertions.assertEquals("a", array[0]);
         //Массив имеет фиксированную длинну и его элементы можно только изменять
 
         array[0] = "d";

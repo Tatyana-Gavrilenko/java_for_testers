@@ -99,4 +99,8 @@ public class ContactHelper extends HelperBase {
         click(By.id("MassCB"));
         removeSelectedContact();
     }
+    public int getContactCount() {
+        openHomePage();
+        return manager.driver.findElements(By.name("selected[]")).size();
+    }
 }
