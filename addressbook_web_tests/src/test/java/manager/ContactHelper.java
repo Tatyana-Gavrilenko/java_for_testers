@@ -3,27 +3,30 @@ package manager;
 import model.ContactData;
 import org.openqa.selenium.By;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class ContactHelper extends HelperBase {
 
     public ContactHelper(ApplicationManager manager) {
         super(manager);
     }
 
-    public void createContact(ContactData contact) {
+    public void createContact(ContactData contacts) {
         initContactCreation();
-        fillContactForm(contact);
+        fillContactForm(contacts);
         submitContactCreation();
         returnHomePage();
     }
 
-    public void deleteContact() {
-        selectContact();
+    public void deleteContact(ContactData contacts) {
+        selectContact(contacts);
         removeSelectedContact();
     }
 
     public void modifyContact(ContactData modifiedContact) {
         openHomePage();
-        selectContact();
+        selectContact(null);
         initContactModification();
         fillNameContactForm(modifiedContact);
         submitContactModification();
@@ -32,7 +35,7 @@ public class ContactHelper extends HelperBase {
 
     public void modifyNameEmailContact(ContactData modifiedContact) {
         openHomePage();
-        selectContact();
+        selectContact(null);
         initContactModification();
         fillWithNameEmailContactForm(modifiedContact);
         submitContactModification();
@@ -91,8 +94,8 @@ public class ContactHelper extends HelperBase {
         click(By.xpath("//img[@alt='Edit']"));
     }
 
-    private void selectContact() {
-        click(By.name("selected[]"));
+    private void selectContact(ContactData contacts) {
+        click(By.cssSelector(String.format("input[value='%s']", contacts.id())));
     }
 
     public void deleteAllContact() {
@@ -102,5 +105,31 @@ public class ContactHelper extends HelperBase {
     public int getContactCount() {
         openHomePage();
         return manager.driver.findElements(By.name("selected[]")).size();
+    }
+
+    //public List<ContactData> getContactList() {
+      //  var contact = new ArrayList<ContactData>();
+        //var trs = manager.driver.findElements(By.name("entry"));
+        //for (var tr : trs) {
+          //  var element = tr.findElements(By.tagName("td"));
+            //var id = tr.findElement(By.name("selected[]")).getAttribute("value");
+           // var lastname = element.get(1).getText();
+            //var name = element.get(2).getText();
+           //contact.add(new ContactData().withId(id).withName(name).withLastName(lastname));
+        //}
+        //return contact;
+
+    public List<ContactData> getContactList() {
+        var contacts = new ArrayList<ContactData>();
+        var trs = manager.driver.findElements(By.name("entry"));
+        for (var tr : trs) {
+            //var cells = tr.findElements(By.tagName("td"));
+            var checkbox = tr.findElement(By.name("selected[]"));
+            var id = checkbox.getAttribute("value");
+            var name = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
+            var lastName = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            contacts.add(new ContactData().withId(id).withName(name).withLastName(lastName));
+        }
+        return contacts;
     }
 }

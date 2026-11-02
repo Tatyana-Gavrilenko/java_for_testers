@@ -2,7 +2,6 @@ package test;
 
 import model.ContactData;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
@@ -18,20 +17,24 @@ public class ContactCreationTests extends TestBase {
                 for (var address : List.of("", "address")) {
                     for (var email : List.of("", "email")) {
                         for (var mobile : List.of("", "mobile")) {
-                            result.add(new ContactData(firstname, lastname, address, email, mobile));
+                            result.add(new ContactData()
+                                    .withName(firstname)
+                                    .withLastName(lastname)
+                                    .withAddress(address)
+                                    .withEmail(email)
+                                    .withMobile(mobile));
                         }
                     }
                 }
             }
         }
         for (int i = 0; i < 5; i++) {
-            result.add(new ContactData(
-                    randomString(i * 10),
-                    randomString(i * 10),
-                    randomString(i * 10),
-                    randomString(i * 10),
-                    randomString(i * 10)
-            ));
+            result.add(new ContactData()
+                            .withName(randomString(i * 10))
+                            .withLastName(randomString(i * 10))
+                            .withAddress(randomString(i * 10))
+                            .withEmail(randomString(i * 10))
+                            .withMobile(randomString(i * 10)));
         }
         return result;
     }
@@ -48,6 +51,7 @@ public class ContactCreationTests extends TestBase {
     public static List<ContactData> negativeContactProvider() {
         var result = new ArrayList<ContactData>(List.of(
                 new ContactData(
+                        "",
                         "Name'",
                         "",
                         "",
