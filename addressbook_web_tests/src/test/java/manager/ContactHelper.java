@@ -24,18 +24,18 @@ public class ContactHelper extends HelperBase {
         removeSelectedContact();
     }
 
-    public void modifyContact(ContactData modifiedContact) {
+    public void modifyContact(ContactData contact, ContactData modifiedContact) {
         openHomePage();
-        selectContact(null);
+        selectContact(contact);
         initContactModification();
         fillNameContactForm(modifiedContact);
         submitContactModification();
         returnHomePage();
     }
 
-    public void modifyNameEmailContact(ContactData modifiedContact) {
+    public void modifyNameEmailContact(ContactData contact, ContactData modifiedContact) {
         openHomePage();
-        selectContact(null);
+        selectContact(contact);
         initContactModification();
         fillWithNameEmailContactForm(modifiedContact);
         submitContactModification();
@@ -107,23 +107,11 @@ public class ContactHelper extends HelperBase {
         return manager.driver.findElements(By.name("selected[]")).size();
     }
 
-    //public List<ContactData> getContactList() {
-      //  var contact = new ArrayList<ContactData>();
-        //var trs = manager.driver.findElements(By.name("entry"));
-        //for (var tr : trs) {
-          //  var element = tr.findElements(By.tagName("td"));
-            //var id = tr.findElement(By.name("selected[]")).getAttribute("value");
-           // var lastname = element.get(1).getText();
-            //var name = element.get(2).getText();
-           //contact.add(new ContactData().withId(id).withName(name).withLastName(lastname));
-        //}
-        //return contact;
-
     public List<ContactData> getContactList() {
+        openHomePage();
         var contacts = new ArrayList<ContactData>();
         var trs = manager.driver.findElements(By.name("entry"));
         for (var tr : trs) {
-            //var cells = tr.findElements(By.tagName("td"));
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
             var name = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();

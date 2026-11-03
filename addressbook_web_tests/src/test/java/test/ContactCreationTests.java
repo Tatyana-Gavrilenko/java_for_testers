@@ -6,6 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.MethodSource;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 
@@ -42,10 +43,22 @@ public class ContactCreationTests extends TestBase {
     @ParameterizedTest
     @MethodSource("contactProvider")
     public void canCreateContact(ContactData contact) {
-        int contactData = app.contact().getContactCount();
+        var oldContact = app.contact().getContactList();
         app.contact().createContact(contact);
-        int newContactCount = app.contact().getContactCount();
-        Assertions.assertEquals(contactData + 1, newContactCount);
+        var newContact = app.contact().getContactList();
+        Comparator<ContactData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));};
+        newContact.sort(compareById);
+        var expectedList = new ArrayList<>(oldContact);
+        expectedList.add(contact.withId(newContact.get(newContact.size() - 1).id())
+                .withName("")
+                .withLastName("")
+                .withAddress("")
+                .withEmail("")
+                .withMobile(""));
+        expectedList.sort(compareById);
+
+        Assertions.assertEquals(newContact, expectedList);
     }
 
     public static List<ContactData> negativeContactProvider() {
@@ -63,9 +76,9 @@ public class ContactCreationTests extends TestBase {
     @ParameterizedTest
     @MethodSource("negativeContactProvider")
     public void canNotCreateContact(ContactData contact) {
-        int contactData = app.contact().getContactCount();
+        var oldContact = app.contact().getContactList();
         app.contact().createContact(contact);
-        int newContactCount = app.contact().getContactCount();
-        Assertions.assertEquals(contactData, newContactCount);
+        var newContact = app.contact().getContactList();
+        Assertions.assertEquals(newContact, oldContact);
     }
 }

@@ -30,14 +30,6 @@ public class ContactDeleteTests extends TestBase {
         expectedList.remove(index);
         Assertions.assertEquals(newContacts, expectedList);
     }
-//var oldContacts = app.contact().getList();
-//        var rnd = new Random();
-//        var index = rnd.nextInt(oldContacts.size());
-//        app.contact().removeContact(oldContacts.get(index));
-//        var newContacts = app.contact().getList();
-//        var expectedList = new ArrayList<>(oldContacts);
-//        expectedList.remove(index);
-//        Assertions.assertEquals(newContacts, expectedList);
 
     @Test
     public void canDeleteAllContact(){
