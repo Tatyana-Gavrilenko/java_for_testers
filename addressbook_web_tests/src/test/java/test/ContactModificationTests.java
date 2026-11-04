@@ -8,12 +8,12 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Random;
 
-public class ContactModificationTests extends TestBase{
+public class ContactModificationTests extends TestBase {
 
     @Test
     void canModifyNameContact() {
         if (app.contact().getContactCount() == 0) {
-            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail","12345"));
+            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345"));
         }
         var oldContact = app.contact().getContactList();
         var rnd = new Random();
@@ -24,9 +24,37 @@ public class ContactModificationTests extends TestBase{
         var expectedList = new ArrayList<>(oldContact);
         expectedList.set(index, testDataContact.withId(oldContact.get(index).id()));
         Comparator<ContactData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));};
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
         newContact.sort(compareById);
         expectedList.sort(compareById);
         Assertions.assertEquals(newContact, expectedList);
     }
+
+    @Test
+    void canModifywithNameEmailContact() {
+        if (app.contact().getContactCount() == 0) {
+            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345"));
+        }
+        var oldContact = app.contact().getContactList();
+        var rnd = new Random();
+        var index = rnd.nextInt(oldContact.size());
+        var testDataContact1 = new ContactData()
+                .withName("ModifyName")
+                .withLastName("ModifyLastName")
+                .withEmail("test@mail.ru");
+        app.contact().modifyContact(oldContact.get(index), testDataContact1);
+        var newContact = app.contact().getContactList();
+        var expectedList = new ArrayList<>(oldContact);
+        expectedList.set(index, testDataContact1.withId(oldContact.get(index).id()));
+        Comparator<ContactData> compareById = (o1, o2) -> {
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        newContact.sort(compareById);
+        expectedList.sort(compareById);
+        Assertions.assertEquals(newContact, expectedList);
+        System.out.println("new =" + newContact);
+        System.out.println("exp =" + expectedList);
+    }
 }
+

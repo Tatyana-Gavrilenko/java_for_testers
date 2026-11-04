@@ -80,6 +80,9 @@ public class ContactHelper extends HelperBase {
 
     private void fillNameContactForm(ContactData contacts) {
         type(By.name("firstname"), contacts.firstname());
+        type(By.name("lastname"), contacts.lastname());
+        type(By.name("email"), contacts.email());
+
     }
 
     private void fillWithNameEmailContactForm(ContactData contacts) {
@@ -114,8 +117,9 @@ public class ContactHelper extends HelperBase {
             var checkbox = tr.findElement(By.name("selected[]"));
             var id = checkbox.getAttribute("value");
             var name = tr.findElement(By.cssSelector("td:nth-child(3)")).getText();
-            var lastName = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
-            contacts.add(new ContactData().withId(id).withName(name).withLastName(lastName));
+            var lastname = tr.findElement(By.cssSelector("td:nth-child(2)")).getText();
+            var email = tr.findElement(By.cssSelector("a[href^='mailto:']")).getAttribute("href").replace("mailto:", "");
+            contacts.add(new ContactData().withId(id).withName(name).withLastName(lastname).withEmail(email));
         }
         return contacts;
     }
