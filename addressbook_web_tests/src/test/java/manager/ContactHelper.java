@@ -24,19 +24,16 @@ public class ContactHelper extends HelperBase {
         removeSelectedContact();
     }
 
-    public void modifyContact(ContactData contact, ContactData modifiedContact) {
-        openHomePage();
-        selectContact(contact);
-        initContactModification();
+    public void modifyContact(ContactData contacts, ContactData modifiedContact) {
+       // openHomePage();
+        initContactModification(contacts);
         fillNameContactForm(modifiedContact);
         submitContactModification();
         returnHomePage();
     }
 
-    public void modifyNameEmailContact(ContactData contact, ContactData modifiedContact) {
-        openHomePage();
-        selectContact(contact);
-        initContactModification();
+    public void modifyNameEmailContact(ContactData contacts, ContactData modifiedContact) {
+        initContactModification(contacts);
         fillWithNameEmailContactForm(modifiedContact);
         submitContactModification();
         returnHomePage();
@@ -73,25 +70,27 @@ public class ContactHelper extends HelperBase {
         click(By.name("update"));
     }
 
-    private void fillContactForm(ContactData contact) {
-        type(By.name("firstname"), contact.firstname());
-        type(By.name("lastname"), contact.lastname());
-        type(By.name("address"), contact.address());
-        type(By.name("email"), contact.email());
-        type(By.name("mobile"), contact.mobile());
+    private void fillContactForm(ContactData contacts) {
+        type(By.name("firstname"), contacts.firstname());
+        type(By.name("lastname"), contacts.lastname());
+        type(By.name("address"), contacts.address());
+        type(By.name("email"), contacts.email());
+        type(By.name("mobile"), contacts.mobile());
     }
 
-    private void fillNameContactForm(ContactData contact) {
-        type(By.name("firstname"), contact.firstname());
+    private void fillNameContactForm(ContactData contacts) {
+        type(By.name("firstname"), contacts.firstname());
     }
 
-    private void fillWithNameEmailContactForm(ContactData contact) {
-        type(By.name("firstname"), contact.firstname());
-        type(By.name("email"), contact.email());
+    private void fillWithNameEmailContactForm(ContactData contacts) {
+        type(By.name("firstname"), contacts.firstname());
+        type(By.name("email"), contacts.email());
     }
 
-    private void initContactModification() {
-        click(By.xpath("//img[@alt='Edit']"));
+    private void initContactModification(ContactData contacts) {
+        //click(By.xpath("//img[@alt='Edit']"));
+        click(By.cssSelector(String.format("a[href='edit.php?id=%s']", contacts.id())));
+
     }
 
     private void selectContact(ContactData contacts) {

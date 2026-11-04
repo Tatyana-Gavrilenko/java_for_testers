@@ -32,7 +32,7 @@ public class ApplicationManager {
         }
         Runtime.getRuntime().addShutdownHook(new Thread(driver::quit));
         driver.get("http://localhost/addressbook/index.php");
-        driver.manage().window().setSize(new Dimension(799, 691));
+        driver.manage().window().setSize(new Dimension(1500, 693));
         session().login("admin", "secret");
     }
 
