@@ -46,7 +46,9 @@ public class GroupCreationTests extends TestBase {
         };//упорядочивание двух списков по id
         newGroups.sort(compareById);
         var expectedList = new ArrayList<>(oldGroups); //старый список
-        expectedList.add(group.withId(newGroups.get(newGroups.size() - 1).id()).withHeader("").withFooter(""));
+        expectedList.add(group.withId(newGroups.get(newGroups.size() - 1).id())
+                .withHeader("")
+                .withFooter(""));
         expectedList.sort(compareById);
         Assertions.assertEquals(newGroups, expectedList);
     }

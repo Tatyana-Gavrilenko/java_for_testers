@@ -31,40 +31,31 @@ public class ContactCreationTests extends TestBase {
         }
         for (int i = 0; i < 5; i++) {
             result.add(new ContactData()
-                            .withName(randomString(i * 10))
-                            .withLastName(randomString(i * 10))
-                            .withAddress(randomString(i * 10))
-                            .withEmail(randomString(i * 10))
-                            .withMobile(randomString(i * 10)));
+                    .withName(randomString(i * 5))
+                    .withLastName(randomString(i * 5))
+                    .withAddress(randomString(i * 5))
+                    .withEmail(randomString(i * 5))
+                    .withMobile(randomString(i * 5)));
         }
         return result;
     }
 
     @ParameterizedTest
     @MethodSource("contactProvider")
-    public void canCreateContact(ContactData contact) {
-        var oldContact = app.contact().getContactList();
+    public void CanCreateMultipleContacts(ContactData contact) {
+        var oldContacts = app.contact().getContactList();
         app.contact().createContact(contact);
-        var newContact = app.contact().getContactList();
+        var newContacts = app.contact().getContactList();
         Comparator<ContactData> compareById = (o1, o2) -> {
-            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));};
-        newContact.sort(compareById);
-        var expectedList = new ArrayList<>(oldContact);
-        expectedList.add(contact.withId(newContact.get(newContact.size() - 1).id()));
+            return Integer.compare(Integer.parseInt(o1.id()), Integer.parseInt(o2.id()));
+        };
+        newContacts.sort(compareById);
+        var expectedList = new ArrayList<>(oldContacts);
+        expectedList.add(contact.withId(newContacts.get(newContacts.size() - 1).id()));
         expectedList.sort(compareById);
 
-        Assertions.assertEquals(newContact, expectedList);
+        Assertions.assertEquals(newContacts, expectedList);
     }
-//.withName("NewContactName")
-//                .withLastName("NewContactLastName")
-//                .withAddress("NewContactAddress")
-//                .withEmail("NewContactEmail")
-//                .withMobile("NewContactMobile"));
-    // .withName("")
-    //            .withLastName("")
-    //               .withAddress("")
-    //             .withEmail("")
-    //              .withMobile(""))
 
     public static List<ContactData> negativeContactProvider() {
         var result = new ArrayList<ContactData>(List.of(
