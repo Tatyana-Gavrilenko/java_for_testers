@@ -1,6 +1,6 @@
-package test;
+package ru.stqa.addressbook.test;
 
-import model.GroupData;
+import ru.stqa.addressbook.model.GroupData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

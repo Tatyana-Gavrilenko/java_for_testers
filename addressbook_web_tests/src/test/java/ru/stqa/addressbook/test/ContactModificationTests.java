@@ -1,6 +1,6 @@
-package test;
+package ru.stqa.addressbook.test;
 
-import model.ContactData;
+import ru.stqa.addressbook.model.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -13,7 +13,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     void canModifyNameContact() {
         if (app.contact().getContactCount() == 0) {
-            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345", ""));
+            app.contact().createContact(new ContactData("", "ru/stqa/addressbook/test", "test2", "test3", "testmail", "12345", ""));
         }
         var oldContact = app.contact().getContactList();
         var rnd = new Random();
@@ -34,7 +34,7 @@ public class ContactModificationTests extends TestBase {
     @Test
     void canModifywithNameEmailContact() {
         if (app.contact().getContactCount() == 0) {
-            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345", "" ));
+            app.contact().createContact(new ContactData("", "ru/stqa/addressbook/test", "test2", "test3", "testmail", "12345", "" ));
         }
         var oldContact = app.contact().getContactList();
         var rnd = new Random();
@@ -42,7 +42,7 @@ public class ContactModificationTests extends TestBase {
         var testDataContact1 = new ContactData()
                 .withName("ModifyName")
                 .withLastName("ModifyLastName")
-                .withEmail("test@mail.ru");
+                .withEmail("testaaa@mail.ru");
         app.contact().modifyContact(oldContact.get(index), testDataContact1);
         var newContact = app.contact().getContactList();
         var expectedList = new ArrayList<>(oldContact);

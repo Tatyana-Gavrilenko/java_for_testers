@@ -1,7 +1,7 @@
-package manager;
+package ru.stqa.addressbook.manager;
 
 import org.openqa.selenium.By;
-import test.TestBase;
+import ru.stqa.addressbook.test.TestBase;
 
 import java.nio.file.Paths;
 

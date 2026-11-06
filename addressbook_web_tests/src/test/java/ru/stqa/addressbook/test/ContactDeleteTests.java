@@ -1,6 +1,6 @@
-package test;
+package ru.stqa.addressbook.test;
 
-import model.ContactData;
+import ru.stqa.addressbook.model.ContactData;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +14,7 @@ public class ContactDeleteTests extends TestBase {
         if (app.contact().getContactCount() == 0) {
             app.contact().createContact(new ContactData(
                     "",
-                    "test",
+                    "ru/stqa/addressbook/test",
                     "test2",
                     "test3",
                     "testmail",
@@ -35,7 +35,7 @@ public class ContactDeleteTests extends TestBase {
     @Test
     public void canDeleteAllContact(){
         if (app.contact().getContactCount() == 0) {
-            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345", ""));
+            app.contact().createContact(new ContactData("", "ru/stqa/addressbook/test", "test2", "test3", "testmail", "12345", ""));
             app.contact().createContact(new ContactData("", "AAAAA", "BBBBB", "CCCCC", "DDDDD", "98765x", ""));
         };
 
