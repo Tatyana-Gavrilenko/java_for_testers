@@ -3,6 +3,8 @@ package test;
 import manager.ApplicationManager;
 import org.junit.jupiter.api.BeforeEach;
 
+import java.io.File;
+import java.nio.file.Paths;
 import java.util.Random;
 
 public class TestBase {
@@ -24,6 +26,15 @@ public class TestBase {
             result = result + (char)('a' + rnd.nextInt(26));
         }
         return result;
+    }
+
+    public static String randomFile(String dir) {
+      var fileNames = new File(dir).list(); //list вернет названия файлов,  listfile соответсвующие объекты
+        var rnd = new Random();
+        var index = rnd.nextInt(fileNames.length); //достаем случайное число не превыщающее количество файлов
+        return Paths.get(dir, fileNames[index]).toString(); //берем путь. кот. соответ. директории и добавляем к нему путь кот соответ файлу с этим индексом, путь преобразовали в строку
+
+
     }
 
 }
