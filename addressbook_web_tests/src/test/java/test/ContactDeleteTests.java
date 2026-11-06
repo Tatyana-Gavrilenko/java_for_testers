@@ -18,7 +18,8 @@ public class ContactDeleteTests extends TestBase {
                     "test2",
                     "test3",
                     "testmail",
-                    "12345")
+                    "12345",
+                    "")
             );
         }
         var oldContacts = app.contact().getContactList();
@@ -34,8 +35,8 @@ public class ContactDeleteTests extends TestBase {
     @Test
     public void canDeleteAllContact(){
         if (app.contact().getContactCount() == 0) {
-            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345"));
-            app.contact().createContact(new ContactData("", "AAAAA", "BBBBB", "CCCCC", "DDDDD", "98765x"));
+            app.contact().createContact(new ContactData("", "test", "test2", "test3", "testmail", "12345", ""));
+            app.contact().createContact(new ContactData("", "AAAAA", "BBBBB", "CCCCC", "DDDDD", "98765x", ""));
         };
 
         app.contact().deleteAllContact();

@@ -32,13 +32,6 @@ public class ContactHelper extends HelperBase {
         returnHomePage();
     }
 
-    public void modifyNameEmailContact(ContactData contacts, ContactData modifiedContact) {
-        initContactModification(contacts);
-        fillWithNameEmailContactForm(modifiedContact);
-        submitContactModification();
-        returnHomePage();
-    }
-
 
     private void submitContactCreation() {
         click(By.xpath("(//input[@name=\'submit\'])[2]"));
@@ -76,6 +69,7 @@ public class ContactHelper extends HelperBase {
         type(By.name("address"), contacts.address());
         type(By.name("email"), contacts.email());
         type(By.name("mobile"), contacts.mobile());
+        attach(By.name("photo"), contacts.photo());
     }
 
     private void fillNameContactForm(ContactData contacts) {
@@ -87,10 +81,6 @@ public class ContactHelper extends HelperBase {
 
     }
 
-    private void fillWithNameEmailContactForm(ContactData contacts) {
-        type(By.name("firstname"), contacts.firstname());
-        type(By.name("email"), contacts.email());
-    }
 
     private void initContactModification(ContactData contacts) {
         //click(By.xpath("//img[@alt='Edit']"));

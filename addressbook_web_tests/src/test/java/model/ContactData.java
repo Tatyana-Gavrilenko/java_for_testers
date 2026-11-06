@@ -1,32 +1,37 @@
 package model;
 
-public record ContactData(String id, String firstname, String lastname, String address, String email, String mobile) {
+public record ContactData(String id, String firstname, String lastname, String address, String email, String mobile,
+                          String photo) {
 
     public ContactData() {
-        this("", "", "", "","", "");
+        this("", "", "", "","", "", "");
     }
 
     public ContactData withId(String id) {
-        return new ContactData(id, this.firstname, this.lastname, this.address, this.email, this.mobile);
+        return new ContactData(id, this.firstname, this.lastname, this.address, this.email, this.mobile, this.photo);
     }
 
     public ContactData withName(String firstname) {
-        return new ContactData(this.id, firstname, this.lastname, this.address, this.email, this.mobile);
+        return new ContactData(this.id, firstname, this.lastname, this.address, this.email, this.mobile, this.photo );
     }
 
     public ContactData withLastName(String lastname) {
-        return new ContactData(this.id, this.firstname, lastname, this.address, this.email, this.mobile);
+        return new ContactData(this.id, this.firstname, lastname, this.address, this.email, this.mobile, this.photo );
     }
 
     public ContactData withAddress(String address) {
-        return new ContactData(this.id, this.firstname, this.lastname, address, this.email, this.mobile);
+        return new ContactData(this.id, this.firstname, this.lastname, address, this.email, this.mobile, this.photo );
     }
 
     public ContactData withEmail(String email) {
-        return new ContactData(this.id, this.firstname, this.lastname, this.address, email, this.mobile);
+        return new ContactData(this.id, this.firstname, this.lastname, this.address, email, this.mobile, this.photo );
     }
 
     public ContactData withMobile(String mobile) {
-        return new ContactData(this.id, this.firstname, this.lastname, this.address, this.email, mobile);
+        return new ContactData(this.id, this.firstname, this.lastname, this.address, this.email, mobile, this.photo );
+    }
+
+    public ContactData withPhoto(String photo) {
+        return new ContactData(this.id, this.firstname, this.lastname, this.address, this.email, this.mobile, photo );
     }
 }

@@ -3,6 +3,8 @@ package manager;
 import org.openqa.selenium.By;
 import test.TestBase;
 
+import java.nio.file.Paths;
+
 public class HelperBase extends TestBase {
 
     protected final ApplicationManager manager;
@@ -15,6 +17,10 @@ public class HelperBase extends TestBase {
         click(locator);
         manager.driver.findElement(locator).clear();
         manager.driver.findElement(locator).sendKeys(text);
+    }
+
+    protected void attach(By locator, String file) {
+        manager.driver.findElement(locator).sendKeys(Paths.get(file).toAbsolutePath().toString());
     }
 
     protected void click(By locator) {
