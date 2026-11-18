@@ -24,8 +24,6 @@ public class TestBase {
         var rnd = new Random();
         var index = rnd.nextInt(fileNames.length); //достаем случайное число не превыщающее количество файлов
         return Paths.get(dir, fileNames[index]).toString(); //берем путь. кот. соответ. директории и добавляем к нему путь кот соответ файлу с этим индексом, путь преобразовали в строку
-
-
     }
 
 }

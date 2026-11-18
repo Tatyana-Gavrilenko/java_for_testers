@@ -1,0 +1,25 @@
+[ {
+  "id" : "",
+  "firstname" : "",
+  "lastname" : "",
+  "address" : "",
+  "email" : "",
+  "mobile" : "",
+  "photo" : "src/test/resources/images/kitten.png"
+}, {
+  "id" : "",
+  "firstname" : "meiwgryqxk",
+  "lastname" : "jmqsxydpre",
+  "address" : "kqmcnntiaa",
+  "email" : "kwdmgngxjf",
+  "mobile" : "uncmjbhyar",
+  "photo" : "src/test/resources/images/avatar.png"
+}, {
+  "id" : "",
+  "firstname" : "xvprtswfvuxrbwefpozv",
+  "lastname" : "edxpssrialstbotjzuvj",
+  "address" : "xfjqaxfahvwiobbobiaq",
+  "email" : "wailsedxwfjxnaejeyat",
+  "mobile" : "fdlxpsrmqcebwacbvuqc",
+  "photo" : "src/test/resources/images/fox.png"
+} ]
